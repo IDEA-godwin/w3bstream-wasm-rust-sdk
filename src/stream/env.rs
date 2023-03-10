@@ -13,6 +13,6 @@ pub fn get_env(key: &str) -> Option<String> {
     let data_size = &mut (0 as i32) as *const i32;
     match unsafe { ws_get_env(key.as_bytes().as_ptr(), key.len() as _, data_ptr, data_size) } {
         0 => Some(unsafe { String::from_raw_parts(*data_ptr, *data_size as _, *data_size as _) }),
-        _ => None,
+        _ => None
     }
 }
